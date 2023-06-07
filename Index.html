@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
+    <title>My First Web Page</title>
 
     <style type="text/css">
         Body {
@@ -14,18 +15,19 @@
 
     <script>
         function myFunction() {
-            var name = document.getElementByID("fname").value;
+            var name = document.getElementById("fname").value;
             var capitalized = name.toUpperCase();
             console.log(capitalized);
         }
     </script>
 </head>
+
 <body>
 
-    <p>This is a simple html document</p>
+    <p>This is a simple Html document</p>
     This Javascript function will capitalize my name:
-    <p>Enter my name: <input type="text" id="fname" onchange="myFunction()"
+    <p>Enter your name: <input type="text" id="fname" onchange="myFunction()"
 
-    </body>
+ </body>
 
 </html>
