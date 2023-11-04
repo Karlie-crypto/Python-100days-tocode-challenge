@@ -1,0 +1,32 @@
+myName = input("What is your name? ")
+if myName == "Karlie":
+    print("Hello, Karlie. You are welcome! ")
+    print("You are the smartest girl in the room!")
+else:
+    print("Hello, stranger.")
+
+drink = input("Do you prefer coffee or tea? ")
+if drink == "coffee":
+  print("Tea is better.")
+else:   
+  print("Excellent choice.")
+  print()
+print ("Today's challenge! Marvel Movie Character Creator ")
+print ()
+hanging_out = input("Do you like to 'hanging around'?: ")
+if hanging_out == "No":
+  print("Then you are not a Spider-man")
+else:
+  print("You are a good friend.")
+print()
+voice = input("Do you have a 'gravelly' voice?: ")
+if voice == "No":
+  print("Aww, then you're not Korg.")
+else:
+  print("You are Korg.")
+print()
+feel = input("Do you often feel 'Marvelous'?:")
+if feel == "Yes":
+  print("You are not Captain America")
+else:
+  print("You are not Captain Marvel! Hi!")

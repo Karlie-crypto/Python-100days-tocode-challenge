@@ -1,0 +1,37 @@
+print("Welcome to the Fake Fan Question Generator!")
+interest = input("What are you interested in (e.g., TV show, movie, music band)? ").lower()
+
+if interest == "tv show":
+    tv_show = input("Which tv show are you a fan of? ").lower()
+    if tv_show == "game of thrones":
+        question1 = input("Who is your favorite character in game of thrones? ").lower()
+        if question1 == "tyrion lannister":
+            print("Oh, a true fan! Tyrion Lannister is a fan favorite!")
+        else:
+            print("Hmm, not the answer I was expecting, but okay.")
+    elif tv_show == "stranger things":
+        question2 = input("Who is Eleven's best friend in stranger things? ").lower()
+        if question2 == "mike":
+            print("Nice one! Mike is indeed Eleven's best friend.")
+        else:
+            print("That's not quite right, but good effort!")
+    else:
+        print("I'm not familiar with that show.")
+elif interest == "movie":
+    movie = input("Which movie are you a fan of? ").lower()
+    if movie == "star wars":
+        question3 = input("Who is Luke Skywalker's father in Star Wars? ").lower()
+        if question3 == "darth vader":
+            print("Correct! Darth Vader is Luke Skywalker's father.")
+        else:
+            print("Hmm, that's not right. But no worries!")
+    elif movie == "harry potter":
+        question4 = input("What is the name of Harry Potter's owl? ").lower()
+        if question4 == "hedwig":
+            print("Well done! Hedwig is Harry Potter's owl.")
+        else:
+            print("Almost there, but not quite. Keep trying!")
+    else:
+        print("I haven't heard of that movie before.")
+else:
+    print("I'm not sure what you're talking about. Can you please specify a valid interest (e.g., TV show, movie)?")

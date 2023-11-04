@@ -1,0 +1,22 @@
+birth_year = int(input("What year were you born? "))
+
+if 1925 <= birth_year <= 1946:
+    generation = "Greatest"
+    emoji = "🎩"
+elif 1947 <= birth_year <= 1964:
+    generation = "Baby Boomers"
+    emoji = "🍼"
+elif 1965 <= birth_year <= 1981:
+    generation = "Generation X"
+    emoji = "🕹️"
+elif 1982 <= birth_year <= 1995:
+    generation = "Silent"
+    emoji = "👨‍👨‍👧‍👦"
+elif 1996 <= birth_year <= 2015:
+    generation = "Millenials"
+    emoji = "👫"
+else:
+    generation = "Unknown"
+    emoji = "❓"
+
+print(f"You are a part of {generation} {emoji} generation!")

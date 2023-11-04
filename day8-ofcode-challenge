@@ -1,0 +1,25 @@
+name = input("What is your name? ").lower()
+day_of_week = input("What day of the week is it? ").lower()
+favorite_things = input("Tell me a few of your favorite things, separated by commas: ").split(',')
+
+if name == "karlie" or name == "abraham":
+    if day_of_week == "monday":
+        affirmation = f"Hello, {name.capitalize()}! You've got this! Embrace the new week with your favorite things: {', '.join(favorite_things)}."
+    elif day_of_week == "tuesday":
+        affirmation = f"Hey, {name.capitalize()}! You're doing great! Stay positive and enjoy your favorite things: {', '.join(favorite_things)}."
+    elif day_of_week == "wednesday":
+        affirmation = f"Hi, {name.capitalize()}! You're halfway there! Keep going and savor your favorite things: {', '.join(favorite_things)}."
+    elif day_of_week == "thursday":
+        affirmation = f"Hello, {name.capitalize()}! You're almost there! Keep pushing through while enjoying your favorite things: {', '.join(favorite_things)}."
+    elif day_of_week == "friday":
+        affirmation = f"Hey, {name.capitalize()}! It's Fri-yay! Celebrate your achievements and indulge in your favorite things: {', '.join(favorite_things)}."
+    elif day_of_week == "saturday":
+        affirmation = f"Hi, {name.capitalize()}! It's the weekend! Relax and enjoy your favorite things: {', '.join(favorite_things)}."
+    elif day_of_week == "sunday":
+        affirmation = f"Hello, {name.capitalize()}! It's a day to recharge. Spend time with your favorite things: {', '.join(favorite_things)}."
+    else:
+        affirmation = "Invalid day of the week. Please enter a valid day."
+else:
+    affirmation = "Sorry, I can only generate affirmations for Karlie or Abraham. Try again with either of those names."
+  
+print(affirmation)

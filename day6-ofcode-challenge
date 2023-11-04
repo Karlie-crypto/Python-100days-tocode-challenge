@@ -1,0 +1,28 @@
+user_credentials = {
+    "karlie": "password1",
+    "abraham": "password2",
+    "tory": "password3"
+}
+
+username = input("Enter your username: ")
+password = input("Enter your password: ")
+
+if username in user_credentials and user_credentials[username] == password:
+    if username == "karlie":
+        print("Hello, Karlie! You're awesome!")
+    elif username == "Abraham":
+        print("Greetings, abraham! You're amazing!")
+    elif username == "tory":
+        print("Hi, Tory! You're fantastic!")
+else:
+    print("Invalid login credentials. Access denied.")
+print()    
+print("SECURE LOGIN")
+username = input("Username > ")
+
+if username == "karlie":
+  print("Welcome Karlie!")
+elif username == "tory":
+  print("Hey there Tory!")
+else:
+  print("Go away!")
