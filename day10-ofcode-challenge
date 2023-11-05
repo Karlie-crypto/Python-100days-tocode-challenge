@@ -1,0 +1,18 @@
+bill_input = input("What was the bill?: ")
+
+bill_input = bill_input.replace(',', '')
+try:
+    myBill = float(bill_input)
+
+    tipPercentage = float(input("What percentage of tip would you like to leave? (Enter a number): "))
+
+    tipAmount = myBill * (tipPercentage / 100)
+    totalBillWithTip = myBill + tipAmount
+
+    numberOfPeople = int(input("How many people?: "))
+
+    totalPerPerson = totalBillWithTip / numberOfPeople
+
+    print("Each person owes: ", totalPerPerson)
+except ValueError:
+    print("Invalid input. Please enter a valid numeric value for the bill and tip percentage.")
