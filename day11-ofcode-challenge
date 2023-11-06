@@ -1,0 +1,14 @@
+SECONDS_PER_MINUTE = 60
+MINUTES_PER_HOUR = 60
+HOURS_PER_DAY = 24
+
+year = int(input("Enter a year: "))
+
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    days_in_year = 366
+else:
+    days_in_year = 365
+
+total_seconds = days_in_year * HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE
+
+print(f"There are {total_seconds} seconds in the year {year}.")
