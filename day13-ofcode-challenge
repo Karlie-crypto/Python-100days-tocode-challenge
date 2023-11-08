@@ -1,0 +1,36 @@
+test_name = input("Enter the name of the test: ")
+max_score = int(input("Enter the maximum score: "))
+user_score = int(input("Enter the points you received: "))
+
+percentage = (user_score / max_score) * 100
+percentage = round(percentage, 2)
+
+if percentage >= 90:
+    grade = "A+"
+    emoji = "🎉"  # Emoji for A+ score
+    color = "\033[92m"  
+elif percentage >= 80:
+    grade = "A"
+    emoji = "😊"  # Emoji for A score
+    color = "\033[94m"  
+elif percentage >= 70:
+    grade = "B"
+    emoji = "👍"  # Emoji for B score
+    color = "\033[93m"  
+elif percentage >= 60:
+    grade = "C"
+    emoji = "😐"  # Emoji for C score
+    color = "\033[95m"  
+elif percentage >= 50:
+    grade = "D"
+    emoji = "😕"  # Emoji for D score
+    color = "\033[91m"  
+else:
+    grade = "U"
+    emoji = "😢"  # Emoji for U score
+    color = "\033[90m"  
+
+print(f"\nTest Name: {test_name}")
+print(f"Your Score: {user_score}/{max_score}")
+print(f"Percentage: {percentage}%")
+print(f"Grade: {color}{grade} {emoji}\033[0m") 
