@@ -3,7 +3,7 @@ while True:
 
     if animal.lower() == "cow":
         print("A cow goes moo.")
-    elif animal.lower() == "lesser spotted lemur":
+    elif animal.lower() == "a lesser spotted lemur":  # Fix the typo here
         print("Ummm...the Lesser Spotter Lemur goes awooga.")
     else:
         print("I'm sorry, I don't know the sound of that animal.")
@@ -13,3 +13,4 @@ while True:
         break
 
 print("Exiting the program.")
+
