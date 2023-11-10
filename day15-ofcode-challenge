@@ -1,0 +1,15 @@
+while True:
+    animal = input("What animal do you want?: ")
+
+    if animal.lower() == "cow":
+        print("A cow goes moo.")
+    elif animal.lower() == "lesser spotted lemur":
+        print("Ummm...the Lesser Spotter Lemur goes awooga.")
+    else:
+        print("I'm sorry, I don't know the sound of that animal.")
+
+    exit_choice = input("Do you want to exit? (yes/no): ")
+    if exit_choice.lower() == "yes":
+        break
+
+print("Exiting the program.")
