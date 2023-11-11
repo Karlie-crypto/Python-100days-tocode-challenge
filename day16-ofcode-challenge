@@ -1,0 +1,8 @@
+while True:
+    user_input = input("Complete the lyrics: Never going to ______ you up.\n").lower()
+
+    if user_input == "give":
+        print("Well done! It only took you 3 attempts.")
+        break
+    else:
+        print("Nope, try again.")
