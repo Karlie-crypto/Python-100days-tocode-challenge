@@ -1,0 +1,16 @@
+multiplication_number = int(input("Math Game!\nName your multiples: "))
+
+score = 0
+for i in range(1, 11):
+    user_answer = int(input(f"{i} X {multiplication_number} = "))
+    
+    if user_answer == i * multiplication_number:
+        print("Great work!")
+        score += 1
+    else:
+        print(f"Nope. The answer was {i * multiplication_number}.")
+
+print(f"\n---\nYou scored {score} out of 10.")
+
+if score == 10:
+    print("🎉 Congratulations! Perfect score! 🎉")
