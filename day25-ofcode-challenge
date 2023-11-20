@@ -1,0 +1,29 @@
+import random
+
+def roll_dice(sides):
+    return random.randint(1, sides)
+
+def generate_health_stats():
+    six_sided_dice = roll_dice(6)
+    eight_sided_dice = roll_dice(8)
+    health_stats = six_sided_dice * eight_sided_dice
+    return health_stats
+
+def main():
+    print("⚔️ Character Stats Generator ⚔️")
+
+    while True:
+        try:
+            character_name = input("Name your warrior: ")
+            health_stats = generate_health_stats()
+            print(f"Their health is: {health_stats}hp")
+            
+            play_again = input("Generate health stats for another character? (yes/no): ").lower()
+            if play_again != 'yes':
+                print("Goodbye!")
+                break
+        except ValueError:
+            print("Please enter a valid input.")
+
+if __name__ == "__main__":
+    main()
