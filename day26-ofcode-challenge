@@ -1,0 +1,40 @@
+import os
+import time
+import pygame
+
+def play():
+    pygame.mixer.init()
+    
+    audio_file_path = 'Top Of The Morning - TrackTribe.mp3'
+
+    pygame.mixer.music.load(audio_file_path)
+    pygame.mixer.music.play()
+
+    while True:
+        user_input = input()
+        if user_input.lower() == 'pause':
+            pygame.mixer.music.pause()
+        elif user_input.lower() == 'play':
+            pygame.mixer.music.unpause()
+        elif user_input.lower() == 'menu':
+            pygame.mixer.music.stop()
+            break  
+
+while True:
+    os.system('clear' if os.name == 'posix' else 'cls')  
+    print("🎵 MyPOD Music Player")
+    print("Press 1 to Play")
+    print("Press 2 to Exit")
+    print("Press anything else to see the menu again.")
+
+    user_choice = input("Enter your choice: ")
+
+    if user_choice == '1':
+        play()
+    elif user_choice == '2':
+        print("Exiting MyPOD Music Player. Goodbye!")
+        break
+    else:
+        continue  
+
+    time.sleep(2)  

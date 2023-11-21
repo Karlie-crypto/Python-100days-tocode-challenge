@@ -1,0 +1,43 @@
+import os
+import time
+import pygame
+
+pygame.mixer.init()
+
+def play():
+    audio_file_path = '/full/path/to/Forever - Luther Vandross.mp3'
+
+    if os.path.exists(audio_file_path):
+        pygame.mixer.music.load(audio_file_path)
+        pygame.mixer.music.play()
+
+        while True:
+            user_input = input()
+            if user_input.lower() == 'pause':
+                pygame.mixer.music.pause()
+            elif user_input.lower() == 'play':
+                pygame.mixer.music.unpause()
+            elif user_input.lower() == 'menu':
+                pygame.mixer.music.stop()
+                break
+    else:
+        print(f"File not found: {audio_file_path}")
+
+while True:
+    os.system('clear' if os.name == 'posix' else 'cls')  
+    print("🎵 MyPOD Music Player")
+    print("Press 1 to Play")
+    print("Press 2 to Exit")
+    print("Press anything else to see the menu again.")
+
+    user_choice = input("Enter your choice: ")
+
+    if user_choice == '1':
+        play()
+    elif user_choice == '2':
+        print("Exiting MyPOD Music Player. Goodbye!")
+        break
+    else:
+        continue  
+
+    time.sleep(2)
