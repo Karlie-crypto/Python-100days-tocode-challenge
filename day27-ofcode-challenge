@@ -1,0 +1,42 @@
+import random
+import time
+import os
+
+def character_name_and_type():
+    name = input("Name Your Legend:\n")
+    char_type = input("Character Type (Human, Elf, Wizard, Orc, etc.):\n")
+    return name, char_type
+
+def roll_dice(sides, num_rolls):
+    return sum(random.randint(1, sides) for _ in range(num_rolls))
+
+def generate_health():
+    return roll_dice(10, 4) + 20
+
+def generate_strength():
+    return roll_dice(6, 3) + 15
+
+def display_character(name, char_type, health, strength):
+    os.system("clear")
+    print("Character Builder")
+    print(f"{name} the {char_type}")
+    print(f"HEALTH: {health}")
+    print(f"STRENGTH: {strength}")
+    print("May your name go down in Legend...")
+
+def main():
+    while True:
+        name, char_type = character_name_and_type()
+        health = generate_health()
+        strength = generate_strength()
+
+        display_character(name, char_type, health, strength)
+
+        play_again = input("Do you want to create another character? (yes/no)\n").lower()
+        if play_again != 'yes':
+            break
+        time.sleep(2)
+
+if __name__ == "__main__":
+    main()
+
