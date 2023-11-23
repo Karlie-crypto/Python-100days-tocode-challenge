@@ -1,0 +1,91 @@
+import time
+import os
+import random
+
+def generate_character():
+    name = input("Name your Legend: ")
+    char_type = input("Character Type (Human, Elf, Wizard, Orc): ")
+    health = random.randint(10, 50)
+    strength = random.randint(10, 30)
+    return {"name": name, "type": char_type, "health": health, "strength": strength}
+
+def display_character(character):
+    print(f"{character['name']} the {character['type']}")
+    print(f"HEALTH: {character['health']}")
+    print(f"STRENGTH: {character['strength']}")
+
+def apply_damage(attacker, defender):
+    damage = max(1, attacker["strength"] - defender["strength"] + 1)
+    defender["health"] -= damage
+    return damage
+
+def clear_screen():
+    os.system("clear")
+
+def battle():
+    print("\n⚔️ BATTLE TIME ⚔️")
+
+    character1 = generate_character()
+    character2 = generate_character()
+
+    clear_screen()
+    print("First character:")
+    display_character(character1)
+    time.sleep(2)
+
+    clear_screen()
+    print("Second character:")
+    display_character(character2)
+    time.sleep(2)
+
+    round_number = 1
+    while True:
+        clear_screen()
+        print(f"\n⚔️ BATTLE TIME - Round {round_number} ⚔️")
+        time.sleep(2)
+
+        roll1 = random.randint(1, 6)
+        roll2 = random.randint(1, 6)
+
+        print(f"{character1['name']} rolls a {roll1}")
+        time.sleep(1)
+        print(f"{character2['name']} rolls a {roll2}")
+        time.sleep(1)
+
+        if roll1 > roll2:
+            winner = character1
+            loser = character2
+        elif roll2 > roll1:
+            winner = character2
+            loser = character1
+        else:
+            print("It's a tie! No damage is dealt.")
+            time.sleep(2)
+            round_number += 1
+            continue
+
+        damage = apply_damage(winner, loser)
+
+        print(f"{winner['name']} wins the round")
+        time.sleep(1)
+        print(f"{loser['name']} takes a hit, with {damage} damage")
+        time.sleep(2)
+
+        clear_screen()
+        print(f"{character1['name']}")
+        display_character(character1)
+        time.sleep(2)
+
+        print(f"{character2['name']}")
+        display_character(character2)
+        time.sleep(2)
+
+        if loser["health"] <= 0:
+            print(f"\nOh no {loser['name']} has died!")
+            time.sleep(2)
+            print(f"{winner['name']} destroyed {loser['name']} in {round_number} rounds!")
+            break
+
+        round_number += 1
+
+battle()
