@@ -1,0 +1,29 @@
+def print_in_color(word, color):
+    color_code = ""
+    
+    if color == "red":
+        color_code = "\033[31m"
+    elif color == "green":
+        color_code = "\033[32m"
+    elif color == "yellow":
+        color_code = "\033[33m"
+    elif color == "blue":
+        color_code = "\033[34m"
+    elif color == "purple":
+        color_code = "\033[35m"
+    elif color == "cyan":
+        color_code = "\033[36m"
+    elif color == "white":
+        color_code = "\033[37m"
+    
+    print(f"{color_code}{word}\033[0m", end="")
+
+print("Super Subroutine")
+print("with my")
+
+print_in_color("text", "red")
+print_in_color("in", "green")
+print_in_color("different", "yellow")
+print_in_color("colors", "blue")
+
+print()
