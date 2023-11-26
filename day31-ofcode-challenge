@@ -1,0 +1,35 @@
+def print_with_color(text, color):
+    colors = {
+        'red': '\033[91m',
+        'green': '\033[92m',
+        'blue': '\033[94m',
+        'reset': '\033[0m'
+    }
+    print(f"{colors[color]}{text}{colors['reset']}", end='')
+
+title_1 = "Welcome to My App"
+text_1 = "This is a simple interface using string manipulation."
+prev_1 = "Previous"
+next_1 = "Next"
+username_1 = "Username:"
+password_1 = "Password:"
+submit_1 = "Submit"
+
+print_with_color(f"{'='*40}\n{title_1.center(40)}\n{'='*40}\n\n{text_1}\n\n", 'blue')
+print_with_color(f"{prev_1.rjust(32)} {next_1.ljust(6)}\n\n", 'green')
+print_with_color(f"{username_1.ljust(12)} [        ]\n{password_1.ljust(12)} [        ]\n\n", 'red')
+print_with_color(f"{submit_1.center(40)}\n{'='*40}\n\n", 'blue')
+
+title_2 = "Advanced Interface"
+text_2 = "This interface requires precise alignment."
+prev_2 = "Go Back"
+next_2 = "Continue"
+username_2 = "Enter Username:"
+password_2 = "Enter Password:"
+submit_2 = "Press to Submit"
+
+print_with_color(f"\n{'='*50}\n{title_2.center(50)}\n{'='*50}\n\n{text_2}\n\n", 'blue')
+print_with_color(f"{prev_2.rjust(40)} {next_2.ljust(10)}\n\n", 'green')
+print_with_color(f"{username_2.ljust(20)} [          ]\n{password_2.ljust(20)} [          ]\n\n", 'red')
+print_with_color(f"{submit_2.center(50)}\n{'='*50}\n", 'blue')
+

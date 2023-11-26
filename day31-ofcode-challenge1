@@ -1,0 +1,56 @@
+def print_with_color(text, color, get_string=False):
+    colors = {
+        'red': '\033[91m',
+        'green': '\033[92m',
+        'blue': '\033[94m',
+        'white': '\033[97m',
+        'yellow': '\033[93m',
+        'purple': '\033[95m',
+        'pink': '\033[95m',
+        'reset': '\033[0m'
+    }
+    if get_string is False:
+        print(f"{colors[color]}{text}{colors['reset']}", end='')
+    else:
+        return f"{colors[color]}{text}{colors['reset']}"
+
+
+def colorize(text, color):
+    return print_with_color(text, color, get_string=True)
+
+
+# Interface 1
+red_eq = colorize('=', 'red')
+white_eq = colorize('=', 'white')
+blue_eq = colorize('=', 'blue')
+title_1 = "{a}{b}{c} Music App {c}{b}{a}".format(
+    a=red_eq, b=white_eq, c=blue_eq
+)
+radio_1 = "🔥▶️   Radio Gaga\n"
+radio_2 = "     Queen\n"
+prev_1 = "PREV"
+next_1 = "NEXT"
+pause_1 = "PAUSE"
+
+print(f"\n{title_1.center(40)}\n")
+
+print_with_color(f"{( '🔥▶️    Radio Gaga')}\n", 'white')
+print_with_color(f"{( '         Queen')}\n\n", 'yellow')
+print_with_color(f"{('PREV')}\n", 'white')
+print_with_color(f"{( '         NEXT')}\n", 'green')
+print_with_color(f"{('                  PAUSE')}\n", 'pink')
+
+# Interface 2
+title_2 = "WELCOME TO"
+subtitle_2 = "--     ARMBOOK   --"
+network_info_2 = "definitely not a rip off of\na certain other social\nnetworking site."
+honest_info_2 = "Honest."
+username_label_2 = "Username:"
+password_label_2 = "Password:"
+
+print_with_color(f"\n{title_2.center(50)}\n", 'white')
+print_with_color(f"{subtitle_2.center(50)}\n\n", 'blue')
+print_with_color(f"{network_info_2}\n", 'yellow')
+print_with_color(f"\n{honest_info_2.center(50)}\n\n", 'red')
+print_with_color(
+    f"{username_label_2}{' ' * 8} [          ]\n{password_label_2}{' ' * 8} [          ]\n", 'white')
