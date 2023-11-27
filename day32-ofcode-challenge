@@ -1,0 +1,30 @@
+import random
+
+greetings = [
+    "Hello!",        # English
+    "Hola!",         # Spanish
+    "Bonjour!",      # French
+    "Ciao!",         # Italian
+    "Guten Tag!",    # German
+    "Konnichiwa!",   # Japanese
+    "Namaste!",      # Hindi
+    "Annyeonghaseyo!",  # Korean
+    "Nǐ hǎo!",       # Chinese (Mandarin)
+    "Salaam!",       # Arabic
+    "Zdravstvuyte!",  # Russian
+    "Merhaba!",      # Turkish
+    "Sawasdee!",     # Thai
+    "Aloha!",        # Hawaiian
+    "Shalom!",       # Hebrew
+    "Jambo!",        # Swahili
+    "Szia!",         # Hungarian
+    "Selamat pagi!",  # Indonesian
+    "Dobrý den!",     # Czech
+    "Ahoj!",         # Slovak
+    "Sawubona",	     # South Africa
+    "Olá!"           # Portuguese
+]
+
+random_index = random.randint(0, len(greetings) - 1)
+
+print(f"{greetings[random_index]}")
