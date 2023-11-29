@@ -1,0 +1,78 @@
+import os
+import time
+
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def view_emails(emails):
+    clear_screen()
+    print("\nEmails:")
+    for index, email in enumerate(emails, start=1):
+        print(f"{index}. {email}")
+    time.sleep(2)  # Pause for 2 seconds
+
+
+def add_email(emails):
+    new_email = input("Enter the new email address: ")
+    emails.append(new_email)
+    print(f'"{new_email}" added to the email list!')
+    time.sleep(2)  # Pause for 2 seconds
+
+
+def remove_email(emails):
+    if emails:
+        view_emails(emails)
+        email_to_remove = input("Enter the email number you want to remove: ")
+
+        try:
+            email_to_remove = int(email_to_remove)
+            if 1 <= email_to_remove <= len(emails):
+                removed_email = emails.pop(email_to_remove - 1)
+                print(f'"{removed_email}" removed from the email list!')
+            else:
+                print("Invalid email number. Please enter a valid email number.")
+        except ValueError:
+            print("Invalid input. Please enter a valid email number.")
+    else:
+        print("No emails in the list.")
+    time.sleep(2)  # Pause for 2 seconds
+
+
+def start_spamming(emails):
+    message = "Dear {},\n\nIt has come to our attention that you're missing out on the amazing Replit 100 days of code. We insist you do it right away. If you don't we will pass on your email address to every spammer we've ever encountered and also sign you up to the My Little Pony newsletter, because that's neat. We might just do that anyway.\n\nLove and hugs,\nIan Spammington III"
+    for email in emails:
+        clear_screen()
+        print(message.format(email))
+        time.sleep(2)  # Pause for 2 seconds
+
+
+def email_manager():
+    email_list = []
+
+    while True:
+        clear_screen()
+        print("Email Manager:")
+        print("1. Add Email\n2. Remove Email\n3. Show Emails\n4. Start Spamming\n5. Exit")
+
+        choice = input("Choose an option (1-5): ")
+
+        if choice == '1':
+            add_email(email_list)
+        elif choice == '2':
+            remove_email(email_list)
+        elif choice == '3':
+            view_emails(email_list)
+        elif choice == '4':
+            start_spamming(email_list)
+        elif choice == '5':
+            print("Exiting the Email Manager. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+            time.sleep(2)  # Pause for 2 seconds
+
+
+if __name__ == "__main__":
+    email_manager()

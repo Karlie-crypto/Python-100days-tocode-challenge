@@ -1,0 +1,54 @@
+import os
+import time
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def view_todo_list(todo_list):
+    print("\nTo Do List:")
+    for index, item in enumerate(todo_list, start=1):
+        print(f"{index}. {item}")
+
+def todo_list_manager():
+    todo_list = []
+
+    while True:
+        clear_screen()
+        print("To Do List Manager:")
+        print("1. View\n2. Add\n3. Edit\n4. Exit")
+
+        choice = input("Choose an option (1-4): ")
+
+        if choice == '1':
+            view_todo_list(todo_list)
+        elif choice == '2':
+            new_item = input("Enter the new to-do item: ")
+            todo_list.append(new_item)
+            print(f'"{new_item}" added to the to-do list!')
+            time.sleep(2)  # Pause for 2 seconds
+        elif choice == '3':
+            if todo_list:
+                view_todo_list(todo_list)
+                item_to_remove = input("Enter the item number you completed: ")
+
+                try:
+                    item_to_remove = int(item_to_remove)
+                    if 1 <= item_to_remove <= len(todo_list):
+                        removed_item = todo_list.pop(item_to_remove - 1)
+                        print(f'"{removed_item}" marked as completed!')
+                    else:
+                        print("Invalid item number. Please enter a valid item number.")
+                except ValueError:
+                    print("Invalid input. Please enter a valid item number.")
+            else:
+                print("No items in the to-do list.")
+            time.sleep(2)  # Pause for 2 seconds
+        elif choice == '4':
+            print("Exiting the To-Do List Manager. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+            time.sleep(2)  # Pause for 2 seconds
+
+if __name__ == "__main__":
+    todo_list_manager()
