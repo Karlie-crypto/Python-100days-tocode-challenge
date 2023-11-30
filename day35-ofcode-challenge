@@ -1,0 +1,81 @@
+class ToDoListManager:
+    def __init__(self):
+        self.todo_list = []
+
+    def show_menu(self):
+        print("To Do List Manager:")
+        print("1. View")
+        print("2. Add")
+        print("3. Edit")
+        print("4. Remove")
+        print("5. Erase entire to-do list")
+        print("6. Exit")
+
+    def view_list(self):
+        print("To-Do List:")
+        for item in self.todo_list:
+            print("-", item)
+
+    def add_item(self):
+        new_item = input("Enter the new to-do item: ")
+        if new_item not in self.todo_list:
+            self.todo_list.append(new_item)
+            print("Item added successfully.")
+        else:
+            print("Item already exists in the to-do list. Duplicate items are not allowed.")
+
+    def edit_item(self):
+        old_item = input("Enter the item you want to edit: ")
+        if old_item in self.todo_list:
+            index = self.todo_list.index(old_item)
+            new_item = input("Enter the new text for the item: ")
+            self.todo_list[index] = new_item
+            print("Item edited successfully.")
+        else:
+            print("Item not found in the to-do list.")
+
+    def remove_item(self):
+        item_to_remove = input("Enter the item you want to remove: ")
+        if item_to_remove in self.todo_list:
+            confirm = input("Are you sure you want to remove this? (yes/no): ")
+            if confirm.lower() == "yes":
+                self.todo_list.remove(item_to_remove)
+                print("Item removed successfully.")
+            else:
+                print("Removal canceled.")
+        else:
+            print("Item not found in the to-do list.")
+
+    def erase_list(self):
+        confirm = input("Are you sure you want to erase the entire to-do list? (yes/no): ")
+        if confirm.lower() == "yes":
+            self.todo_list = []
+            print("To-do list erased successfully.")
+        else:
+            print("Erasure canceled.")
+
+    def run(self):
+        while True:
+            self.show_menu()
+            choice = input("Enter your choice (1-6): ")
+
+            if choice == "1":
+                self.view_list()
+            elif choice == "2":
+                self.add_item()
+            elif choice == "3":
+                self.edit_item()
+            elif choice == "4":
+                self.remove_item()
+            elif choice == "5":
+                self.erase_list()
+            elif choice == "6":
+                print("Exiting the To-Do List Manager. Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please enter a number between 1 and 6.")
+
+if __name__ == "__main__":
+    todo_manager = ToDoListManager()
+    todo_manager.run()
+
