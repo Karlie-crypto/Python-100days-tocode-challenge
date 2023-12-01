@@ -1,0 +1,25 @@
+name_list = []
+
+def add_name(first_name, last_name):
+   
+    first_name = first_name.capitalize().strip()
+    last_name = last_name.capitalize().strip()
+
+    full_name = f"{first_name} {last_name}"
+
+    if full_name not in name_list:
+        name_list.append(full_name)
+        print("Updated Name List:", name_list)
+    else:
+        print("Duplicate entry. Name not added.")
+
+while True:
+    user_first_name = input("Enter first name (or 'exit' to end): ").strip()
+    
+    if user_first_name.lower() == 'exit':
+        break
+
+    user_last_name = input("Enter last name: ").strip()
+
+    add_name(user_first_name, user_last_name)
+
