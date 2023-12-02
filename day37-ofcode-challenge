@@ -1,0 +1,9 @@
+input_data = input("🌟Star Wars Name Generator🌟\nInput your first name\nlast name\n mother's maiden name\ncity where you were born (separated by spaces) > ").split()
+
+first_name, last_name, maiden_name, city = input_data
+
+star_wars_first_name = f"{first_name[:3].capitalize()}{last_name[:3].capitalize()}"
+
+star_wars_last_name = f"{maiden_name[:2].capitalize()}{city[-3:].capitalize()}"
+
+print(f"Your Star Wars name is {star_wars_first_name} {star_wars_last_name}")
