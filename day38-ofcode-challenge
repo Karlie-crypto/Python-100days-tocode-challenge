@@ -1,0 +1,27 @@
+def rainbowize(sentence):
+    color_map = {
+        'r': '\033[31m',
+        'b': '\033[34m',
+        'g': '\033[32m',
+        'p': '\033[35m',
+        'y': '\033[33m',
+    }
+
+    current_color = '\033[33m'  # yellow for the initial message
+
+    for char in sentence:
+        if char.lower() in color_map:
+            current_color = color_map[char.lower()]
+        elif char == ' ':
+            current_color = '\033[33m'  # yellow for spaces
+        print(f"{current_color}{char}", end="")
+
+    print('\033[0m')
+
+
+# Get user input
+user_input = input(
+    "\033[33mWhat sentence do you want rainbow-ising? \033[32m\n")
+
+# Rainbow-ize and print the result
+rainbowize(user_input)
