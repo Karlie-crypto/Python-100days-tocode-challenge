@@ -1,0 +1,133 @@
+import random
+
+# Function to randomly choose a word from a predefined list
+def choose_word():
+    words = ["hangman", "python", "programming", "challenge", "developer", "coding"]
+    return random.choice(words)
+
+# Function to display the current state of the word with guessed letters
+def display_word(word, guessed_letters):
+    display = ""
+    for letter in word:
+        if letter in guessed_letters:
+            display += letter
+        else:
+            display += "_"
+    return display
+
+# Function to draw the hangman ASCII art based on the number of incorrect guesses
+def draw_hangman(incorrect_guesses):
+    hangman_art = [
+        """
+        -----
+        |   |
+        |
+        |
+        |
+        |
+        -
+        """,
+        """
+        -----
+        |   |
+        O   |
+            |
+            |
+            |
+        -
+        """,
+        """
+        -----
+        |   |
+        O   |
+        |   |
+            |
+            |
+        -
+        """,
+        """
+        -----
+        |   |
+        O   |
+       /|   |
+            |
+            |
+        -
+        """,
+        """
+        -----
+        |   |
+        O   |
+       /|\\  |
+            |
+            |
+        -
+        """,
+        """
+        -----
+        |   |
+        O   |
+       /|\\  |
+       /    |
+            |
+        -
+        """,
+        """
+        -----
+        |   |
+        O   |
+       /|\\  |
+       / \\  |
+            |
+        -
+        """
+    ]
+    return hangman_art[incorrect_guesses]
+
+# Main function for the Hangman game and initializations
+def hangman():
+    word_to_guess = choose_word()
+    guessed_letters = []
+    incorrect_guesses = 0
+    max_incorrect_guesses = 6
+
+    print("🌟Hangman🌟")
+    
+    while True:
+      # User input for a letter
+        user_input = input(f"Choose a letter: ").lower()
+
+      # Check if the letter has already been guessed
+        if user_input in guessed_letters:
+            print("You've already guessed that letter. Try again.")
+            continue
+
+      # Add the guessed letter to the list of guessed letters
+        guessed_letters.append(user_input)
+
+       # Check if the guessed letter is in the word
+        if user_input in word_to_guess:
+            print("Correct!")
+        else:
+            print(f"Nope, not in there.")
+            incorrect_guesses += 1
+            print(f"{max_incorrect_guesses - incorrect_guesses} left.")
+            print(draw_hangman(incorrect_guesses))
+
+      # Display the current state of the word with guessed letters
+        word_display = display_word(word_to_guess, guessed_letters)
+        print(word_display)
+
+      # Check for game outcomes
+        if "_" not in word_display:
+            print(f"You won with {max_incorrect_guesses - incorrect_guesses} lives left.")
+            break
+
+        if incorrect_guesses == max_incorrect_guesses:
+            print("You lost!")
+            print(f"The word was: {word_to_guess}")
+            break
+
+if __name__ == "__main__":
+   # Call the main function to start the game
+    hangman()
