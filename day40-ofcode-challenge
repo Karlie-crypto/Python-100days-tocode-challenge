@@ -1,0 +1,21 @@
+# Ask the user to input their details
+name = input("Input your name > ").strip()
+dob = input("Input your date of birth > ").strip()
+telephone = input("Input your telephone number > ").strip()
+email = input("Input your email > ").strip()
+address = input("Input your address > ").strip()
+
+# Create a dictionary to store the information
+contact_card = {
+    "name": name,
+    "date_of_birth": dob,
+    "telephone_number": telephone,
+    "email": email,
+    "address": address
+}
+
+# Print the contact card
+print("\n🌟Contact Card🌟")
+print(f"Hi {contact_card['name']}. Our dictionary says that you were born on {contact_card['date_of_birth']}, "
+      f"we can call you on {contact_card['telephone_number']}, email {contact_card['email']}, "
+      f"or write to {contact_card['address']}")
