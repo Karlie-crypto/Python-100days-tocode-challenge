@@ -1,0 +1,18 @@
+# Create an empty dictionary with default values
+website_info = {"name": None, "URL": None, "description": None, "rating": None}
+
+# Loop through the keys and get input from the user
+for key in website_info:
+    user_input = input(f"Input the {key.replace('_', ' ')}: ")
+    
+    # If the key is 'rating', count the number of '*' characters
+    if key == 'rating':
+        website_info[key] = '*' * len(user_input)
+    else:
+        website_info[key] = user_input
+
+# Output the entire dictionary
+print("\n🌟Website Rating🌟")
+for key, value in website_info.items():
+    print(f"{key}: {value}")
+
