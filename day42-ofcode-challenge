@@ -1,0 +1,35 @@
+# Define the dictionary to store MokéBeast details
+mokebeast = {}
+
+# Ask user to input details
+input_string = input("👾 MokéBeast - The Non-Copyright Generic Beast Battle Game 👾\n"
+                     "Input your beast's name, type (earth, fire, air, water, or spirit), special move, starting HP, and starting MP, separated by commas > ")
+
+# Split the input string and assign values to the dictionary
+name, beast_type, special_move, starting_hp, starting_mp = input_string.split(", ")
+mokebeast['name'] = name
+mokebeast['type'] = beast_type
+mokebeast['special_move'] = special_move
+mokebeast['starting_hp'] = starting_hp
+mokebeast['starting_mp'] = starting_mp
+
+# Output the beast's details
+print(f"\n# This text outputs in", end=" ")
+
+# Change font color based on the beast's type
+if beast_type.lower() == 'fire':
+    print("\033[91mred\033[0m.")
+elif beast_type.lower() == 'water':
+    print("\033[94mblue\033[0m.")
+elif beast_type.lower() == 'air':
+    print("\033[97mwhite\033[0m.")
+elif beast_type.lower() == 'earth':
+    print("\033[92mgreen\033[0m.")
+elif beast_type.lower() == 'spirit':
+    print("\033[95mpurple\033[0m.")
+else:
+    print("default color.")
+
+# Output the beast's details
+print(f"Your beast is called {name}. It is a {beast_type} beast with a special move of {special_move}.")
+
