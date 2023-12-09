@@ -1,0 +1,46 @@
+import random
+
+def createCard():
+    card = []
+    for _ in range(5):
+        row = random.sample(range(1, 16), 5)
+        card.append(row)
+    return card
+
+def printCard(card):
+    for row in card:
+        print(row)
+
+def markNumber(card, number):
+    for row in card:
+        if number in row:
+            index = row.index(number)
+            row[index] = 'X'
+
+def checkWin(card, magicNumber):
+    x_count = 0
+    for row in card:
+        x_count += row.count('X')
+    return x_count >= magicNumber
+
+def playBingo():
+    magicNumber = 5  # Adjust this number based on your preference for the winning condition
+    bingoCard = createCard()
+    print("Bingo Card:")
+    printCard(bingoCard)
+
+    while True:
+        userNumber = int(input("Enter the next number (1-15): "))
+        if 1 <= userNumber <= 15:
+            markNumber(bingoCard, userNumber)
+            print("Updated Bingo Card:")
+            printCard(bingoCard)
+
+            if checkWin(bingoCard, magicNumber):
+                print("Bingo! You've won!")
+                break
+        else:
+            print("Invalid number. Please enter a number between 1 and 15.")
+
+if __name__ == "__main__":
+    playBingo()

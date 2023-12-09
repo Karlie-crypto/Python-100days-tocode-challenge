@@ -1,0 +1,38 @@
+import random
+from colorama import Fore, Style, init
+
+init(autoreset=True)
+
+def generate_bingo_card():
+    bingo_card = [["" for _ in range(3)] for _ in range(3)]
+
+    numbers = random.sample(range(1, 91), 8)
+    numbers.sort()
+
+    index = 0
+    for row in range(3):
+        for col in range(3):
+            if row == col == 1:
+                bingo_card[row][col] = f"{Fore.YELLOW}BINGO{Style.RESET_ALL}"
+            else:
+                bingo_card[row][col] = f"{Fore.YELLOW}{numbers[index]}{Style.RESET_ALL}"
+                index += 1
+
+    return bingo_card
+
+def display_table(data):
+    for i, row in enumerate(data):
+        formatted_row = f"{Fore.YELLOW}{'|':<4}{Style.RESET_ALL}".join(map(str, row))
+        print(f"{Fore.YELLOW}{formatted_row}{Style.RESET_ALL}")
+        if i < len(data) - 1:
+            print(f"{Fore.YELLOW}{'-' * 36}{Style.RESET_ALL}")
+
+def display_bingo_card(bingo_card):
+    
+    print(f"{Fore.YELLOW}Karlie's Nan's Bingo Card Generator{Style.RESET_ALL}\n")
+    display_table(bingo_card)
+    print(f"{Fore.YELLOW}{' '*4}{Style.RESET_ALL}")
+
+if __name__ == "__main__":
+    bingo_card = generate_bingo_card()
+    display_bingo_card(bingo_card)
