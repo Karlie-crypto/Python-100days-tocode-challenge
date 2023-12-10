@@ -1,0 +1,87 @@
+import os
+
+todos = []
+
+def clear_console():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+def add_todo():
+    clear_console()
+    task = input("What is the task? > ")
+    due_date = input("When is it due by? > ")
+    priority = input("What is the priority? (High/Medium/Low) > ").capitalize()
+    todos.append({'Task': task, 'Due Date': due_date, 'Priority': priority})
+    print("Thanks, this task has been added.")
+
+def view_all():
+    clear_console()
+    print("All To Dos:")
+    for idx, todo in enumerate(todos, 1):
+        print(f"{idx}. Task: {todo['Task']}, Due Date: {todo['Due Date']}, Priority: {todo['Priority']}")
+    input("Press Enter to continue...")
+
+def view_priority():
+    clear_console()
+    priority = input("Enter priority to view (High/Medium/Low) > ").capitalize()
+    matching_todos = [todo for todo in todos if todo['Priority'] == priority]
+    print(f"All {priority} Priority To Dos:")
+    for idx, todo in enumerate(matching_todos, 1):
+        print(f"{idx}. Task: {todo['Task']}, Due Date: {todo['Due Date']}, Priority: {todo['Priority']}")
+    input("Press Enter to continue...")
+
+def edit_todo():
+    clear_console()
+    view_all()
+    choice = int(input("Enter the number of the task to edit > ")) - 1
+    if 0 <= choice < len(todos):
+        todo = todos[choice]
+        print(f"Editing Task: {todo['Task']}")
+        todo['Task'] = input("Enter new task > ")
+        todo['Due Date'] = input("Enter new due date > ")
+        todo['Priority'] = input("Enter new priority (High/Medium/Low) > ").capitalize()
+        print("Task edited successfully.")
+    else:
+        print("Invalid choice. Task not found.")
+
+def remove_todo():
+    clear_console()
+    view_all()
+    choice = int(input("Enter the number of the task to remove > ")) - 1
+    if 0 <= choice < len(todos):
+        removed_todo = todos.pop(choice)
+        print(f"Removed Task: {removed_todo['Task']}")
+    else:
+        print("Invalid choice. Task not found.")
+
+def main():
+    while True:
+        clear_console()
+        print("🌟Life Organizer🌟")
+        print("Welcome to the life organizer. Do you want to add, view, edit or remove a to do?")
+        choice = input("> ").lower()
+
+        if choice == 'add':
+            add_todo()
+        elif choice == 'view':
+            print("View Options: 1. View all, 2. View by priority")
+            view_choice = input("Enter choice > ").lower()
+            if view_choice == '1':
+                view_all()
+            elif view_choice == '2':
+                view_priority()
+            else:
+                print("Invalid choice.")
+        elif choice == 'edit':
+            edit_todo()
+        elif choice == 'remove':
+            remove_todo()
+        elif choice == 'quit':
+            break
+        else:
+            print("Invalid choice. Please enter add, view, edit, remove, or quit.")
+
+if __name__ == "__main__":
+    main()
