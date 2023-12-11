@@ -1,0 +1,29 @@
+def prettyPrint(beast):
+    print(f"name: {beast['name']} | element: {beast['element']} | special move: {beast['special_move']} | HP: {beast['starting_HP']} | MP: {beast['starting_MP']}")
+
+def main():
+    dex = []
+    
+    print("🌟MokeBeast Generator🌟")
+    
+    while True:
+        beast = {}
+        
+        beast['name'] = input("Input the beast name > ")
+        beast['element'] = input("Input the beast element > ")
+        beast['special_move'] = input("Input the beast special move > ")
+        beast['starting_HP'] = int(input("Input the beast starting HP > "))
+        beast['starting_MP'] = int(input("Input the beast starting MP > "))
+        
+        dex.append(beast)
+        
+        again = input("Again? y/n > ").lower()
+        if again != 'y':
+            break
+    
+    for beast in dex:
+        prettyPrint(beast)
+
+if __name__ == "__main__":
+    main()
+
