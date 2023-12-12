@@ -1,0 +1,78 @@
+import random
+
+def create_card(name):
+    return {
+        'Intelligence': random.randint(1, 100),
+        'Handsomeness': random.randint(1, 100),
+        'L33t c0ding skillz': random.randint(1, 100),
+        'Baldness level': random.randint(1, 100)
+    }
+
+def display_stats(card):
+    for stat, value in card.items():
+        print(f"{stat}: {value}")
+
+def compare_cards(card1, card2, chosen_stat):
+    stat1 = card1[chosen_stat]
+    stat2 = card2[chosen_stat]
+    print(f"{card1['name']} has a {chosen_stat} stat of {stat1}")
+    print(f"{card2['name']} has a {chosen_stat} stat of {stat2}")
+
+    if stat1 > stat2:
+        return f"************* {card1['name']} wins! ********"
+    elif stat1 < stat2:
+        return f"************* {card2['name']} wins! ********"
+    else:
+        return "************* It's a tie! ********"
+
+def play_game():
+    print("🌟Top Trumps🌟")
+    print("Welcome to the Top Trumps 'Most Handsome Computing Teachers' Simulator")
+
+    cards = [
+        {'name': 'Mr. Morgan', **create_card('Mr. Morgan')},
+        {'name': 'Mr. Colley', **create_card('Mr. Colley')}
+        # Add more cards dynamically if needed
+    ]
+
+    player1_score = 0
+    player2_score = 0
+
+    while True:
+        random.shuffle(cards)
+        card1, card2 = cards[:2]
+
+        print(f"Choose your card: 1 - {card1['name']}  2 - {card2['name']}")
+        choice = input("> ")
+
+        if choice not in ('1', '2'):
+            print("Invalid choice. Please choose 1 or 2.")
+            continue
+
+        chosen_card = card1 if choice == '1' else card2
+
+        print("Choose your stat:")
+        for i, stat in enumerate(chosen_card.keys(), start=1):
+            print(f"{i}. {stat}")
+
+        chosen_stat_index = int(input("> ")) - 1
+        chosen_stat = list(chosen_card.keys())[chosen_stat_index]
+
+        result = compare_cards(card1, card2, chosen_stat)
+        print(result)
+
+        if "wins" in result:
+            if chosen_card == card1:
+                player1_score += 1
+            else:
+                player2_score += 1
+
+        print(f"Player 1 Score: {player1_score}")
+        print(f"Player 2 Score: {player2_score}")
+
+        play_again = input("Again? y/n > ").lower()
+        if play_again != 'y':
+            break
+
+if __name__ == "__main__":
+    play_game()
