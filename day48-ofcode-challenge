@@ -1,0 +1,18 @@
+def main():
+    print("🌟HIGH SCORE TABLE🌟")
+
+    while True:
+        user_input = input("Input your initials and score (e.g., DJM 89764): ")
+        initials, score = user_input.split()
+
+        with open('high.score', 'a') as file:
+            file.write(f"{initials} {score}\n")
+            print("Added to high score table.")
+
+        add_another = input("Add another? y/n? ").lower()
+        if add_another != 'y':
+            break
+
+if __name__ == "__main__":
+    main()
+
