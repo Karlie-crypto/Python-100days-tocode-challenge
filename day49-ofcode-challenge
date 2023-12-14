@@ -1,0 +1,24 @@
+def find_high_score():
+    max_score = ['', 0]  # Initializing max_score with empty initials and 0 score
+
+    with open('high.score', 'r') as file:
+        for line in file:
+            initials, score_str = line.split()
+            score = int(score_str.replace(',', ''))  # Remove commas and convert to integer
+
+            if score > max_score[1]:
+                max_score = [initials, score]
+
+    return max_score
+
+def main():
+    print("🌟Current Leader🌟")
+    print("Analyzing high scores......")
+
+    leader = find_high_score()
+
+    print(f"Current leader is {leader[0]} {leader[1]:,}")
+
+if __name__ == "__main__":
+    main()
+
