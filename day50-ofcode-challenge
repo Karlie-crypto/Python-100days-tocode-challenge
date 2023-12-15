@@ -1,0 +1,43 @@
+import random
+
+def display_menu():
+    print("🌟 Idea Storage 🌟")
+    print("Add an idea or see a random idea? a/r/q. ")
+
+def add_idea():
+    idea = input("Input your idea. > ")
+    with open('my.ideas', 'a') as file:
+        file.write(idea + '\n')
+    print("Nice! Your idea has been stored.")
+
+def load_random_idea():
+    try:
+        with open('my.ideas', 'r') as file:
+            ideas = file.readlines()
+            if not ideas:
+                print("No ideas found. Add some ideas first.")
+                return
+
+            random_idea = random.choice(ideas).strip()
+            print(f"\nRandom Idea: {random_idea}\n")
+    except FileNotFoundError:
+        print("No ideas found. Add some ideas first.")
+
+def main():
+    while True:
+        display_menu()
+        choice = input("> ").lower()
+
+        if choice == 'a':
+            add_idea()
+        elif choice == 'r':
+            load_random_idea()
+        elif choice == 'q':
+            print("Exiting Idea Storage. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 'a' to add an idea, 'r' to load a random idea, or 'q' to quit.")
+
+if __name__ == "__main__":
+    main()
+
