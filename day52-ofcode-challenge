@@ -1,0 +1,58 @@
+import pickle
+
+def add_pizza(pizza_list):
+    name = input("Name please > ")
+    try:
+        quantity = int(input("How many pizzas? > "))
+        size = input("What size? > ")
+    except ValueError:
+        print("You must input a numerical character, try again.")
+        return
+
+    cost = quantity * calculate_cost(size)
+    pizza_list.append([name, quantity, size, cost])
+    print(f"Thanks {name}, your pizzas will cost {cost}")
+
+def view_pizzas(pizza_list):
+    for pizza in pizza_list:
+        print(f"Name: {pizza[0]}, Quantity: {pizza[1]}, Size: {pizza[2]}, Cost: {pizza[3]}")
+
+def calculate_cost(size):
+    # You can customize the cost calculation based on pizza size
+    # For simplicity, let's assume a fixed cost for any size
+    return 10  # Replace with your own cost calculation logic
+
+def save_data(pizza_list):
+    with open('pizza_data.pkl', 'wb') as file:
+        pickle.dump(pizza_list, file)
+
+def load_data():
+    try:
+        with open('pizza_data.pkl', 'rb') as file:
+            return pickle.load(file)
+    except FileNotFoundError:
+        return []
+
+def main():
+    pizza_list = load_data()
+
+    while True:
+        print("\n🌟Dave's Dodgy Pizzas🌟")
+        print("1. Add Pizza")
+        print("2. View Pizzas")
+        print("3. Exit")
+
+        choice = input("Select an option (1/2/3) > ")
+
+        if choice == '1':
+            add_pizza(pizza_list)
+        elif choice == '2':
+            view_pizzas(pizza_list)
+        elif choice == '3':
+            save_data(pizza_list)
+            break
+        else:
+            print("Invalid choice. Please choose again.")
+
+if __name__ == "__main__":
+    main()
