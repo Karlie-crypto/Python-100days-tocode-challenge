@@ -1,0 +1,57 @@
+import os
+
+# Function to add an item to the inventory file
+def add_item(item):
+    with open("inventory.txt", "a") as file:
+        file.write(item.capitalize() + '\n')
+    print(f'{item.capitalize()} has been added to your inventory.')
+
+# Function to remove an item from the inventory file
+def remove_item(item):
+    try:
+        with open("inventory.txt", "r") as file:
+            lines = file.readlines()
+        with open("inventory.txt", "w") as file:
+            for line in lines:
+                if line.strip().capitalize() != item.capitalize():
+                    file.write(line)
+        print(f'{item.capitalize()} has been removed from your inventory.')
+    except FileNotFoundError:
+        print("Inventory file not found.")
+
+# Function to view the inventory and count the occurrences of an item
+def view_inventory(item):
+    try:
+        with open("inventory.txt", "r") as file:
+            inventory = file.readlines()
+            count = inventory.count(item.capitalize() + '\n')
+            print(f'You have {count} {item.capitalize()}')
+    except FileNotFoundError:
+        print("Inventory file not found.")
+
+# Function to display the main menu
+def display_menu():
+    print("🌟RPG Inventory🌟")
+    print("1: Add  2: Remove  3: View")
+
+# Function to handle the user's choice
+def main():
+    while True:
+        display_menu()
+        choice = input("> ")
+
+        if choice == '1':
+            item_to_add = input("Input the item to add: > ")
+            add_item(item_to_add)
+        elif choice == '2':
+            item_to_remove = input("Input the item to remove: > ")
+            remove_item(item_to_remove)
+        elif choice == '3':
+            item_to_view = input("Input the item to view: > ")
+            view_inventory(item_to_view)
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    main()
+
