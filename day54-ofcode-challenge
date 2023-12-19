@@ -1,0 +1,31 @@
+import csv
+import os
+
+def calculate_daily_earnings(csv_file_path):
+    total_earnings = 0
+
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        
+        for row in reader:
+            # Assuming 'cost' and 'quantity' are the column names in the CSV
+            cost = float(row['Cost'])
+            quantity = int(row['Quantity'])
+
+            # Calculate earnings for each item and add to the total
+            item_earnings = cost * quantity
+            total_earnings += item_earnings
+
+    return total_earnings
+
+# Print the current working directory
+print("Current Working Directory:", os.getcwd())
+
+# Provide the path to your 'Day54Totals.csv' file
+# Adjust the file path based on the actual structure of your project
+csv_file_path = "Day54Totals.csv"
+# Calculate and print the total earnings for the day
+total_earnings = calculate_daily_earnings(csv_file_path)
+
+print("🌟Shop $$ Tracker🌟")
+print(f"Your shop took £{total_earnings:.2f} pounds today.")
