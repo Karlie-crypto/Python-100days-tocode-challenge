@@ -1,0 +1,35 @@
+import os
+import csv
+
+# Path to the CSV file
+csv_file_path = '100MostStreamedSongs.csv'
+
+# Directory where you want to save the folders and files
+base_directory = './music_library/'
+
+# Ensure the base directory exists
+if not os.path.exists(base_directory):
+    os.makedirs(base_directory)
+
+# Read the CSV file and categorize songs by artist
+with open(csv_file_path, mode='r', encoding='utf-8-sig') as file:
+    csv_reader = csv.DictReader(file)
+    
+    for row in csv_reader:
+        artist = row['Artist(s)']
+        song = row['Song']
+        
+        # Create directory for the artist if it doesn't exist
+        artist_directory = os.path.join(base_directory, artist)
+        if not os.path.exists(artist_directory):
+            os.makedirs(artist_directory)
+        
+        # Define the path for the text file
+        file_path = os.path.join(artist_directory, f"{song}.txt")
+        
+        # Create a blank text file if it doesn't exist
+        if not os.path.exists(file_path):
+            with open(file_path, 'w') as text_file:
+                text_file.write("")  # Writing an empty string to the file
+
+print("Data categorization completed!")
