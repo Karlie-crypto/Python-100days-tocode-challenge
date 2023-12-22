@@ -1,0 +1,21 @@
+def factorial(n):
+    # Base case: if n is 1, return 1
+    if n == 1:
+        return 1
+    # Recursive case: multiply n by factorial of (n-1)
+    else:
+        return n * factorial(n - 1)
+
+def main():
+    print("🌟 Factorial Finder 🌟")
+    num = int(input("Input a number > "))
+    
+    # Validate if the input is a positive number
+    if num < 0:
+        print("Factorial is not defined for negative numbers.")
+    else:
+        result = factorial(num)
+        print(f"The factorial of {num} is {result}.")
+
+if __name__ == "__main__":
+    main()
