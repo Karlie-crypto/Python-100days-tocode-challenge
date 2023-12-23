@@ -1,0 +1,41 @@
+import random
+
+totalAttempts = 0
+
+def game():
+    attempts = 0
+    while True:
+        number = random.randint(1, 100)
+        try:
+            guess = int(input("Pick a number between 1 and 100: "))
+        except ValueError:
+            print("Invalid input. Please enter a valid integer between 1 and 100.")
+            continue
+        
+        if guess > 100 or guess < 1:
+            print("Please enter a number between 1 and 100.")
+            continue
+
+        if guess > number:
+            print("Too high")
+            attempts += 1
+        elif guess < number:
+            print("Too low")
+            attempts += 1
+        else:
+            print("Just right!")
+            print(f"{attempts + 1} attempts this round")  # Add 1 to include the correct guess attempt
+            return attempts + 1
+
+while True:
+    menu = input("1: Guess the random number game\n2: Total Score\n3: Exit\n> ")
+    
+    if menu == "1":
+        totalAttempts += game()
+    elif menu == "2":
+        print(f"You've had {totalAttempts} attempts")
+    elif menu == "3":
+        print("Exiting the game. Goodbye!")
+        break
+    else:
+        print("Invalid option. Please choose again.")
