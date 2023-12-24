@@ -1,0 +1,27 @@
+def is_palindrome(s):
+    # Standardize the case of the input string
+    s = s.lower()
+    
+    # Base case: if the string is empty or has only one character, it's a palindrome
+    if len(s) <= 1:
+        return True
+    
+    # Check if the first and last characters are the same
+    if s[0] == s[-1]:
+        # Recur with the inner substring
+        return is_palindrome(s[1:-1])
+    
+    # If characters are not the same, it's not a palindrome
+    return False
+
+def main():
+    print("🌟 Palindrome Checker 🌟")
+    word = input("Input a word > ")
+    
+    if is_palindrome(word):
+        print(f"{word} is a palindrome. Yay!")
+    else:
+        print(f"{word} is not a palindrome. Try another word!")
+
+if __name__ == "__main__":
+    main()
