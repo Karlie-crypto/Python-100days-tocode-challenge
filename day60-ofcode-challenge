@@ -1,0 +1,30 @@
+from datetime import datetime
+
+def get_event_date():
+    name = input("Input the event > ")
+    year = int(input("Input the year > "))
+    month = int(input("Input the month > "))
+    day = int(input("Input the day > "))
+    return name, datetime(year, month, day)
+
+def calculate_days_until_event(event_date):
+    today = datetime.now()
+    delta = event_date - today
+    return delta.days
+
+def main():
+    print("🌟 Event Countdown Timer 🌟")
+    
+    event_name, event_date = get_event_date()
+    
+    days_until_event = calculate_days_until_event(event_date)
+    
+    if days_until_event == 0:
+        print(f"🎉🎉 {event_name} is today! 🎉🎉")
+    elif days_until_event < 0:
+        print(f"😢 {event_name} was {abs(days_until_event)} days ago.")
+    else:
+        print(f"There are {days_until_event} days until {event_name}.")
+
+if __name__ == "__main__":
+    main()
