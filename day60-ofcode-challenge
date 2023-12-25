@@ -1,10 +1,10 @@
 from datetime import datetime
 
 def get_event_date():
-    name = input("Input the event > ")
-    year = int(input("Input the year > "))
-    month = int(input("Input the month > "))
-    day = int(input("Input the day > "))
+    name = input("The event:  ")
+    year = int(input("Year:  "))
+    month = int(input("Month: "))
+    day = int(input("Day: "))
     return name, datetime(year, month, day)
 
 def calculate_days_until_event(event_date):
