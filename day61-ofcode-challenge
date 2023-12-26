@@ -1,0 +1,51 @@
+import datetime
+import os
+
+# Initialize an empty dictionary to act as our "database"
+tweets = {}
+
+def add_tweet():
+    """Add a tweet to the database."""
+    tweet = input("Enter your tweet: ")
+    timestamp = datetime.datetime.now()
+    tweets[timestamp] = tweet
+    print("Tweet added successfully!\n")
+
+def view_tweets():
+    """View tweets in reverse chronological order."""
+    sorted_tweets = sorted(tweets.items(), reverse=True)
+    
+    for index, (timestamp, tweet) in enumerate(sorted_tweets, 1):
+        print(f"{index}. {tweet} - {timestamp}")
+        
+        # Show 10 tweets at a time
+        if index % 10 == 0:
+            choice = input("Show another 10 tweets? (yes/no): ").lower()
+            if choice != 'yes':
+                break
+            else:
+                # Clear the console
+                os.system('cls' if os.name == 'nt' else 'clear')
+    print()
+
+def main():
+    while True:
+        print("Welcome to MyTwitter!")
+        print("1. Add a tweet")
+        print("2. View tweets")
+        print("3. Exit")
+        
+        choice = input("Enter your choice (1/2/3): ")
+        
+        if choice == '1':
+            add_tweet()
+        elif choice == '2':
+            view_tweets()
+        elif choice == '3':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.\n")
+
+if __name__ == "__main__":
+    main()
