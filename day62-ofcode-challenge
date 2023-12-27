@@ -1,0 +1,74 @@
+import os
+from datetime import datetime
+
+# Database to store diary entries
+diary_entries = {}
+
+# Set the password for accessing the diary
+password = "secret123"
+
+def main():
+    while True:
+        os.system('clear')  # Clear the screen
+        print("Welcome to your private diary!")
+        user_password = input("Enter the password to access: ")
+
+        if user_password != password:
+            print("Incorrect password. Exiting.")
+            break
+
+        while True:
+            os.system('clear')  # Clear the screen
+            print("Main Menu:")
+            print("1. Add diary entry")
+            print("2. View diary entries")
+            print("3. Exit")
+            choice = input("Enter your choice (1/2/3): ")
+
+            if choice == "1":
+                add_entry()
+            elif choice == "2":
+                view_entries()
+            elif choice == "3":
+                break
+            else:
+                print("Invalid choice. Try again.")
+
+def add_entry():
+    entry = input("Type your diary entry: ")
+    timestamp = datetime.now()
+    diary_entries[timestamp] = entry
+    print("Entry added successfully!")
+
+def view_entries():
+    if not diary_entries:
+        print("No entries found.")
+        input("Press Enter to continue...")
+        return
+
+    dates = sorted(diary_entries.keys(), reverse=True)
+    for date in dates:
+        os.system('clear')  # Clear the screen
+        print(f"Entry Date: {date}")
+        print(diary_entries[date])
+        
+        choice = input("\nPress 'n' for next entry, 'b' to go back to menu, or enter a date (YYYY-MM-DD) to view from: ")
+        
+        if choice == 'b':
+            break
+        elif choice == 'n':
+            continue
+        else:
+            try:
+                chosen_date = datetime.strptime(choice, "%Y-%m-%d")
+                for d in dates:
+                    if d.date() >= chosen_date.date():
+                        print(f"\nEntry Date: {d}")
+                        print(diary_entries[d])
+            except ValueError:
+                print("Invalid date format.")
+                input("Press Enter to continue...")
+
+if __name__ == "__main__":
+    main()
+
