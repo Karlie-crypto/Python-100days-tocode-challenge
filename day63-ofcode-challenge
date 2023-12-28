@@ -1,0 +1,13 @@
+from my_library import roll_dice, pretty_print, generate_random_insult
+
+def main():
+    # Roll a 6-sided dice
+    dice_result = roll_dice()
+    pretty_print(f"Rolled a dice and got: {dice_result}")
+
+    # Generate a random insult
+    insult = generate_random_insult()
+    pretty_print(f"Here's an insult for you: {insult}")
+
+if __name__ == "__main__":
+    main()
