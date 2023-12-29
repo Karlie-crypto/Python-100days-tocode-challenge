@@ -1,0 +1,50 @@
+class Job:
+    def __init__(self, name, salary, hours_worked):
+        self.name = name
+        self.salary = salary
+        self.hours_worked = hours_worked
+    
+    def display_details(self):
+        print(f"Job type: {self.name}")
+        print(f"Salary: ${self.salary}")
+        print(f"Hours worked: {self.hours_worked}\n")
+
+
+class Doctor(Job):
+    def __init__(self, name, salary, hours_worked, speciality, years_of_experience):
+        super().__init__(name, salary, hours_worked)
+        self.speciality = speciality
+        self.years_of_experience = years_of_experience
+    
+    def display_details(self):
+        super().display_details()
+        print(f"Speciality: {self.speciality}")
+        print(f"Years of Experience: {self.years_of_experience}\n")
+
+
+class Teacher(Job):
+    def __init__(self, name, salary, hours_worked, subject, position):
+        super().__init__(name, salary, hours_worked)
+        self.subject = subject
+        self.position = position
+    
+    def display_details(self):
+        super().display_details()
+        print(f"Subject: {self.subject}")
+        print(f"Position: {self.position}\n")
+
+
+def main():
+    lawyer = Job("Lawyer", "Squillions", 60)
+    computer_science_teacher = Teacher("Teacher", "Nowhere near enough", "All of them", "Computer Science", "Classroom Teacher")
+    pediatric_doctor = Doctor("Doctor", "Doing very nicely thank you", 50, "Pediatric Consultant", 7)
+
+    print("🌟Jobs Jobs Jobs!🌟")
+    lawyer.display_details()
+    computer_science_teacher.display_details()
+    pediatric_doctor.display_details()
+
+
+if __name__ == "__main__":
+    main()
+
