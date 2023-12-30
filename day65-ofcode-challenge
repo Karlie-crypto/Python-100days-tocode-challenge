@@ -1,0 +1,82 @@
+class Character:
+    def __init__(self, name, health, magic_points):
+        self.name = name
+        self.health = health
+        self.magic_points = magic_points
+
+    def display_details(self):
+        print(f"Name: {self.name}")
+        print(f"Health: {self.health}")
+        print(f"Magic Points: {self.magic_points}")
+
+
+class Player(Character):
+    def __init__(self, name, health, magic_points, lives):
+        super().__init__(name, health, magic_points)
+        self.lives = lives
+
+    def am_i_alive(self):
+        return "Yes" if self.health > 0 else "No"
+
+    def display_details(self):
+        super().display_details()
+        print(f"Lives: {self.lives}")
+        print(f"Alive?: {self.am_i_alive()}")
+
+
+class Enemy(Character):
+    def __init__(self, name, health, magic_points, enemy_type, strength):
+        super().__init__(name, health, magic_points)
+        self.type = enemy_type
+        self.strength = strength
+
+
+class Orc(Enemy):
+    def __init__(self, name, health, magic_points, strength, speed):
+        super().__init__(name, health, magic_points, "Orc", strength)
+        self.speed = speed
+
+    def display_details(self):
+        super().display_details()
+        print(f"Type: {self.type}")
+        print(f"Strength: {self.strength}")
+        print(f"Speed: {self.speed}")
+
+
+class Vampire(Enemy):
+    def __init__(self, name, health, magic_points, strength, day_night):
+        super().__init__(name, health, magic_points, "Vampire", strength)
+        self.day_night = day_night
+
+    def display_details(self):
+        super().display_details()
+        print(f"Type: {self.type}")
+        print(f"Strength: {self.strength}")
+        print(f"Day/Night?: {self.day_night}")
+
+
+def main():
+    print("🌟Generic RPG🌟")
+
+    player = Player("David", 100, 50, 3)
+    vampire1 = Vampire("Boris", 45, 70, 3, "Night")
+    vampire2 = Vampire("Rishi", 70, 10, 75, "Day")
+    orc1 = Orc("Bill", 60, 5, 75, 90)
+    orc2 = Orc("Ted", 75, 40, 80, 45)
+    orc3 = Orc("Station", 35, 40, 49, 50)
+
+    player.display_details()
+    print()
+    vampire1.display_details()
+    print()
+    vampire2.display_details()
+    print()
+    orc1.display_details()
+    print()
+    orc2.display_details()
+    print()
+    orc3.display_details()
+
+
+if __name__ == "__main__":
+    main()
