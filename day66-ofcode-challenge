@@ -1,0 +1,61 @@
+import tkinter as tk
+
+# Global variables
+answer = 0
+lastnumber = 0
+operator = ""
+
+def buttonChoice(value):
+    current = label.cget("text")
+    if current == "0":
+        current = ""
+    label.config(text=current + str(value))
+
+def operatorChoice(op):
+    global lastnumber, operator
+    lastnumber = int(label.cget("text"))
+    operator = op
+    label.config(text="0")
+
+def calc():
+    global answer, lastnumber, operator
+    if operator == "+":
+        answer = lastnumber + int(label.cget("text"))
+    elif operator == "-":
+        answer = lastnumber - int(label.cget("text"))
+    elif operator == "*":
+        answer = lastnumber * int(label.cget("text"))
+    elif operator == "/":
+        answer = lastnumber / int(label.cget("text"))
+    label.config(text=str(answer))
+    lastnumber = 0
+    operator = ""
+
+# Create main window
+root = tk.Tk()
+root.title("Simple Calculator")
+
+# Create label for display
+label = tk.Label(root, text="0", width=20, font=("Arial", 20))
+label.grid(row=0, column=0, columnspan=4)
+
+# Create buttons
+buttons = [
+    ("7", 1, 0), ("8", 1, 1), ("9", 1, 2), ("+", 1, 3),
+    ("4", 2, 0), ("5", 2, 1), ("6", 2, 2), ("-", 2, 3),
+    ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("*", 3, 3),
+    ("0", 4, 0), ("=", 4, 1), ("/", 4, 2)
+]
+
+for (text, row, col) in buttons:
+    if text.isdigit():
+        btn = tk.Button(root, text=text, width=5, height=2, command=lambda value=text: buttonChoice(value))
+    else:
+        btn = tk.Button(root, text=text, width=5, height=2, command=lambda op=text: operatorChoice(op))
+    btn.grid(row=row, column=col)
+
+# Equal button
+equal_btn = tk.Button(root, text="=", width=5, height=2, command=calc)
+equal_btn.grid(row=4, column=1)
+
+root.mainloop()
