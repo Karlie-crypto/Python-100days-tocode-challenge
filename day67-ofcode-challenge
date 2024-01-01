@@ -1,0 +1,52 @@
+import os
+import tkinter as tk
+from PIL import Image, ImageTk
+
+def load_image(name):
+    try:
+        # Mapping names to their respective file paths
+        file_mapping = {
+            "Charlotte": "/Users/karliemoyo/Downloads/charlotte.jpg",
+            "Gerald": "/Users/karliemoyo/Downloads/gerald.jpg",
+            "Katie": "/Users/karliemoyo/Downloads/katie.jpg",
+            "Mo": "/Users/karliemoyo/Downloads/mo.jpg",
+            "Karlie": "/Users/karliemoyo/Downloads/Karlie.jpeg"
+        }
+        
+        # Get the file path for the provided name
+        file_path = file_mapping.get(name)
+        
+        # If the file path exists, open and display the image
+        if file_path and os.path.exists(file_path):
+            img = Image.open(file_path)
+            img = ImageTk.PhotoImage(img)
+            panel.config(image=img)
+            panel.image = img
+        else:
+            print("Image not found!")
+
+    except Exception as e:
+        print(f"Error loading image: {e}")
+
+def on_button_click():
+    name = name_entry.get().strip().capitalize()
+    load_image(name)
+
+# Create the main window
+window = tk.Tk()
+window.title("Guess Who?")
+window.geometry("400x450")
+
+# Create an entry widget for user input
+name_entry = tk.Entry(window, width=30)
+name_entry.pack(pady=20)
+
+# Create a button widget
+button = tk.Button(window, text="Show Image", command=on_button_click)
+button.pack(pady=20)
+
+# Create a panel to display the image
+panel = tk.Label(window)
+panel.pack(pady=20)
+
+window.mainloop()
