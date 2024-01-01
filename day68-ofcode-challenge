@@ -1,0 +1,54 @@
+import os
+import tkinter as tk
+from PIL import Image, ImageTk
+
+def load_image():
+    name = name_entry.get().strip().capitalize()  # Get user input
+    try:
+        # Mapping names to their respective file paths
+        file_mapping = {
+            "Charlotte": "/Users/karliemoyo/Downloads/charlotte.jpg",
+            "Gerald": "/Users/karliemoyo/Downloads/gerald.jpg",
+            "Katie": "/Users/karliemoyo/Downloads/katie.jpg",
+            "Mo": "/Users/karliemoyo/Downloads/mo.jpg",
+            "Karlie": "/Users/karliemoyo/Downloads/Karlie.jpeg"
+        }
+        
+        # Get the file path for the provided name
+        file_path = file_mapping.get(name)
+        
+        if file_path and os.path.exists(file_path):
+            img = Image.open(file_path)
+            img = ImageTk.PhotoImage(img)
+            panel.config(image=img)
+            panel.image = img
+            error_label.pack_forget()  # Hide the error label if it was previously displayed
+        else:
+            # If image not found, display the error label
+            panel.config(image=None)  # Clear the panel
+            error_label.pack(pady=20)  # Pack the error label to display it
+
+    except Exception as e:
+        print(f"Error loading image: {e}")
+
+# Create the main window
+window = tk.Tk()
+window.title("Guess Who?")
+window.geometry("400x450")
+
+# Create an entry widget for user input
+name_entry = tk.Entry(window, width=30)
+name_entry.pack(pady=20)
+
+# Create a button widget
+button = tk.Button(window, text="Show Image", command=load_image)
+button.pack(pady=20)
+
+# Create a panel to display the image
+panel = tk.Label(window)
+panel.pack(pady=20)
+
+# Create an error label for displaying 'Unable to find image'
+error_label = tk.Label(window, text="Unable to find image", fg="white")
+
+window.mainloop()
