@@ -1,0 +1,73 @@
+
+import tkinter as tk
+from PIL import Image, ImageTk
+
+class ChooseYourAdventure:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Visual novel")
+        self.page_number = 1
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.image_label = tk.Label(self.root)
+        self.image_label.pack()
+
+        self.text_label = tk.Label(self.root, text="")
+        self.text_label.pack()
+
+        self.button_frame = tk.Frame(self.root)
+        self.button_frame.pack()
+
+        self.create_page()
+
+    def create_page(self):
+        if self.page_number == 1:
+            self.show_page(
+                "01_challenge1.jpeg",
+                """You meet a woman on the way to a Replit meetup IRL
+                Choose a path:""",
+                [("Ask her how she codes?", 2), 
+                 ("Tell her about Replit", 3), ("I use Replit too", 3)]
+            )
+        elif self.page_number == 2:
+            self.show_page(
+                "/Users/karliemoyo/Downloads/01_challenge2.jpeg",
+                "She tries to pull out her laptop and drops it on the floor",
+                [("She says I will use local editor", 1), ("She says 'I use Replit", 2)]
+            )
+        elif self.page_number == 3:
+            self.show_page(
+                "/Users/karliemoyo/Downloads/01_challenge3.jpeg",
+                "You both celebrate using the best\n coding platform on your way to the meetup.",
+                [("Restart", 1)]
+            )
+
+    def show_page(self, image_path, text, options):
+        image = Image.open(image_path)
+        image = image.resize((300, 300))
+        photo = ImageTk.PhotoImage(image)
+
+        self.image_label.configure(image=photo)
+        self.image_label.image = photo
+
+        self.text_label.configure(text=text)
+
+        for button in self.button_frame.winfo_children():
+            button.destroy()
+
+        # Stack the buttons vertically
+        for option, next_page in options:
+            btn = tk.Button(self.button_frame, text=option,
+                            command=lambda np=next_page: self.go_to_page(np))
+            # Stack buttons vertically, fill width
+            btn.pack(side=tk.TOP, fill=tk.X)
+
+    def go_to_page(self, next_page):
+        self.page_number = next_page
+        self.create_page()
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ChooseYourAdventure(root)
+    tk.mainloop()
