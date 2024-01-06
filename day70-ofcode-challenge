@@ -1,0 +1,22 @@
+# Define the credentials for admin and normal users
+ADMIN_USERNAME = "admin01"
+ADMIN_PASSWORD = "thepowerTHEPOWER"
+
+NORMAL_USERNAME = "normie01"
+NORMAL_PASSWORD = "mypasswordMYpassword"
+
+def login():
+    print("🌟 Login System 🌟")
+    
+    username = input("Username > ")
+    password = input("Password > ")
+
+    if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        print("Hello admin")
+    elif username == NORMAL_USERNAME and password == NORMAL_PASSWORD:
+        print("Hello normie")
+    else:
+        print("Invalid username or password. Access denied.")
+
+if __name__ == "__main__":
+    login()
