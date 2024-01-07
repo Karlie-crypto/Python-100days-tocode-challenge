@@ -1,0 +1,71 @@
+import hashlib
+import random
+import string
+
+# Simulated REPL database
+repl_db = {}
+
+def generate_salt():
+    """Generate a random 4-digit salt."""
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=4))
+
+def hash_password(password, salt):
+    """Hash the given password using SHA-256 with the provided salt."""
+    return hashlib.sha256((password + salt).encode()).hexdigest()
+
+def add_user():
+    """Add a new user to the database."""
+    username = input("Username: > ")
+    password = input("Password: > ")
+    
+    # Generate a random 4-digit salt
+    salt = generate_salt()
+    
+    # Hash the password with the salt
+    hashed_password = hash_password(password, salt)
+    
+    # Store the hashed password and salt in the database
+    repl_db[username] = {'hashed_password': hashed_password, 'salt': salt}
+    
+    print("Details stored.")
+
+def login():
+    """Login a user."""
+    username = input("Username: > ")
+    password = input("Password: > ")
+    
+    # Check if the user exists in the database
+    if username in repl_db:
+        stored_hashed_password = repl_db[username]['hashed_password']
+        salt = repl_db[username]['salt']
+        
+        # Hash the input password with the stored salt
+        input_hashed_password = hash_password(password, salt)
+        
+        # Compare the hashed passwords
+        if input_hashed_password == stored_hashed_password:
+            print("Login successful.")
+        else:
+            print("Invalid username or password.")
+    else:
+        print("Invalid username or password.")
+
+def main():
+    """Main function to display the menu."""
+    while True:
+        print("\n🌟Login System🌟")
+        print("1: Add User, 2: Login, 3: Exit")
+        choice = input("> ")
+        
+        if choice == '1':
+            add_user()
+        elif choice == '2':
+            login()
+        elif choice == '3':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
