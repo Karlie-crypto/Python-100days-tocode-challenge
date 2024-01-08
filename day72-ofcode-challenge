@@ -1,0 +1,150 @@
+import os
+import hashlib
+import json
+from datetime import datetime
+from typing import Dict
+
+# Database to store diary entries and user credentials
+diary_entries: Dict[datetime, str] = {}
+user_credentials = {}
+
+
+def load_data():
+    global diary_entries, user_credentials
+    try:
+        with open("diary.json", "r") as f:
+            data = json.load(f)
+            user_credentials = data.get("user_credentials", {})
+
+            # properly deserialize object keys from string to datetime
+            _diary_entries: dict = data.get("diary_entries", {})
+            for key, value in _diary_entries.items():
+                diary_entries.update({
+                    datetime.fromisoformat(key): value
+                })
+
+    except FileNotFoundError:
+        pass
+
+    except json.decoder.JSONDecodeError:
+        pass
+
+
+def save_data():
+
+    # properly serialize entries keys from datetime to string
+    _diary_entries = {}
+    for key, value in diary_entries.items():
+        _diary_entries.update({
+            key.isoformat(): value
+        })
+
+    data = {"diary_entries": _diary_entries,
+            "user_credentials": user_credentials}
+    with open("diary.json", "w") as f:
+        json.dump(data, f)
+
+
+def create_user():
+    username = "karlie"
+    password = "moyo"
+
+    salt = os.urandom(16)
+    hashed_password = hashlib.pbkdf2_hmac(
+        'sha256', password.encode('utf-8'), salt, 100000)
+
+    user_credentials[username] = {
+        "salt": salt.hex(),
+        "hashed_password": hashed_password.hex()
+    }
+    save_data()
+
+
+def verify_password(username, password):
+    if username in user_credentials:
+        stored_salt = bytes.fromhex(user_credentials[username]["salt"])
+        stored_hashed_password = bytes.fromhex(
+            user_credentials[username]["hashed_password"])
+
+        hashed_password = hashlib.pbkdf2_hmac(
+            'sha256', password.encode('utf-8'), stored_salt, 100000)
+
+        return hashed_password == stored_hashed_password
+    return False
+
+
+def add_entry():
+    entry = input("Type your diary entry: ")
+    timestamp = datetime.now()
+    diary_entries[timestamp] = entry
+    print("Entry added successfully!")
+
+
+def view_entries():
+    if not diary_entries:
+        print("No entries found.")
+        input("Press Enter to continue...")
+        return
+
+    dates = sorted(diary_entries.keys(), reverse=True)
+    for date in dates:
+        os.system('clear')  # Clear the screen
+        print(f"Entry Date: {date}")
+        print(diary_entries[date])
+
+        choice = input(
+            "\nPress 'n' for next entry, 'b' to go back to menu, or enter a date (YYYY-MM-DD) to view from: ")
+
+        if choice == 'b':
+            break
+        elif choice == 'n':
+            continue
+        else:
+            try:
+                chosen_date = datetime.strptime(choice, "%Y-%m-%d")
+                for d in dates:
+                    if d.date() >= chosen_date.date():
+                        print(f"\nEntry Date: {d}")
+                        print(diary_entries[d])
+            except ValueError:
+                print("Invalid date format.")
+                input("Press Enter to continue...")
+
+
+def main():
+    load_data()  # Load diary entries and user credentials
+
+    if not user_credentials:  # If no user credentials, it's the first time running
+        create_user()
+
+    while True:
+        os.system('clear')  # Clear the screen
+        print("Welcome to your private diary!")
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+
+        if verify_password(username, password):
+            while True:
+                os.system('clear')  # Clear the screen
+                print("Main Menu:")
+                print("1. Add diary entry")
+                print("2. View diary entries")
+                print("3. Exit")
+                choice = input("Enter your choice (1/2/3): ")
+
+                if choice == "1":
+                    add_entry()
+                elif choice == "2":
+                    view_entries()
+                elif choice == "3":
+                    save_data()  # Save diary entries and user credentials before exiting
+                    break
+                else:
+                    print("Invalid choice. Try again.")
+        else:
+            print("Incorrect username or password. Exiting.")
+            break
+
+
+if __name__ == "__main__":
+    main()
