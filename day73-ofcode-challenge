@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Portfolio Project</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .text-content {
+        flex: 1;
+        padding-left: 20px; /* Add some space between the image and text */
+      }
+
+      /* Style for the images */
+      .image-container {
+        display: flex;
+        justify-content: space-between; /* Distribute the images evenly */
+      }
+
+      .image-container div {
+        width: 30%; /* Adjust based on your preference */
+        margin-right: 10px; /* Add some space between the images */
+      }
+
+      .image-container div img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Karlie's Portfolio Project</h1>
+
+    <div class="container">
+      <img src="Karlie.jpg" alt="Karlie Image" width="20%" />
+      <div class="text-content">
+        <p>
+          Hey there! 🌟 My name is Karlie Moyo, a passionate full-stack
+          developer hailing from South Africa. Currently, skilled in JavaScript,
+          C, Python, Ruby, React, Node.js, and more. Committed to creating
+          seamless, user-friendly web experiences. Join me in shaping the
+          digital world! 🚀I'm immersed in crafting innovative web applications,
+          utilising technologies like Python, Ruby, JavaScript, React, and
+          Node.js. I aim to create impactful solutions and enrich the digital
+          landscape. Let's collaborate and code something extraordinary! 🚀
+        </p>
+
+        <p>
+          In my continuous pursuit of skill enhancement and disciplined
+          learning, I undertook the '100 Days of Code' challenge. This
+          initiative required dedicating a minimum of one hour daily to coding
+          tasks and projects for a consecutive 100 days. Throughout this
+          journey, I focused on refining my coding capabilities, expanding my
+          technical expertise, and developing a consistent work ethic. Engaging
+          with a vibrant online community, I shared my progress, collaborated on
+          diverse projects, and leveraged feedback to drive continuous
+          improvement. This experience not only enriched my programming skills
+          but also reinforced my commitment to lifelong learning and
+          professional growth.
+        </p>
+
+        <h1>What I Have Learned!</h1>
+        <ul>
+          <li>Greatneness is a lot of small things done well</li>
+          <li>The salt of patience seasons everything</li>
+          <li>Grit alone is not enough develop passion and determination</li>
+          <li>
+            He who rejects change is the architect of decay. The only human
+            institution which rejects progress is the cemetery
+          </li>
+        </ul>
+        <h2>3 Things I am excited about:</h2>
+        <ul>
+          <li>Skill Enhancement and Mastery</li>
+          <li>Achievement and Personal Growth</li>
+          <li>Community Engagement and Networking</li>
+        </ul>
+        <p>Let's Collaborate!</p>
+      </div>
+    </div>
+
+    <h2>Let's Tour to My Achievements:</h2>
+    <p>Below is the link to my Repo👇🏽</p>
+    <p>
+      <a href="https://github.com/Karlie-crypto/Python-100days-tocode-challenge"
+        >GitHub Repository</a
+      >
+    </p>
+
+    <div class="image-container">
+      <div>
+        <img src="images/Calculator.png" alt="Calculator Image" />
+        <p>
+            The calculator project was built using the tkinter library in Python for
+            creating a graphical user interface (GUI). The main interface consists of
+            a window with buttons for numbers (0-9) and basic arithmetic operations
+            (+, -, *, /). A global variable named expression holds the current
+            calculation input. When a button is clicked, its value is appended to the
+            expression. Upon pressing the '=' button, the eval() function processes
+            the expression to evaluate the arithmetic operation and display the result
+            on a label. If there's an error during evaluation, an "Error" message is
+            displayed. After displaying the result or an error, the expression is
+            reset to allow for a new calculation. Button placements were organized
+            using grid layout management in tkinter to structure the interface
+            effectively.
+        </p>
+      </div>
+      <div>
+        <img src="images/Cardgenerator.png" alt="Card Generator Image" />
+        <p>
+            The Bingo Card Generator was developed using Python, incorporating the
+            Colorama library for text coloring. The primary function,
+            generate_bingo_card, constructs a 3x3 bingo card. It generates 8 unique
+            random numbers between 1 and 90, sorts them, and populates the card. The
+            central cell is reserved for the word 'BINGO!' displayed in yellow. The
+            display_table function formats and prints the bingo card rows, separating
+            them with horizontal lines for clarity. Finally, the main function,
+            display_bingo_card, initiates the display by showcasing "Karlie's Nan's
+            Bingo Card Generator" in yellow. The overall design ensures a visually
+            appealing and organized representation of a bingo card, fulfilling the
+            challenge requirements while leveraging color for enhanced readability.
+        </p>
+      </div>
+      <div>
+        <img src="images/tkinterimage.png" alt="Tkinter Image" width="10%" />
+        <p>
+            The code defines a visual novel interface using Tkinter in Python. The
+            ChooseYourAdventure class manages pages with images and text. Depending on
+            the page number, it displays relevant content and options for the user.
+            Images are resized using PIL, and buttons allow progression to different
+            pages. An error occurred due to missing arguments in the show_page method.
+            The code has been rearranged to correct these issues, presenting a
+            structured flow for a text-based adventure with visual elements.
+        </p>
+      </div>
+    </div>
+    <a href="karlie.html">Go to page 2</a>
+  </body>
+</html>

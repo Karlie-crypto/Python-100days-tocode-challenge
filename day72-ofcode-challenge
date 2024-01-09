@@ -6,8 +6,6 @@ from typing import Dict
 
 # Database to store diary entries and user credentials
 diary_entries: Dict[datetime, str] = {}
-user_credentials = {}
-
 
 def load_data():
     global diary_entries, user_credentials
