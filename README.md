@@ -1,5 +1,10 @@
 # HTML
 In the practice of tolerance, one's enemy is the best teacher.
+
+
+
+
+
 ![image](https://github.com/Karlie-crypto/Python-100days-tocode-challenge/assets/110098940/b4c883bb-8d8a-46e8-955a-591e84b6cb3a)
 
 
