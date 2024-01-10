@@ -8,6 +8,14 @@
 
 <body>
     <h1>Let's Tour to My Achievements:</h1>
+    <h2>Day 73: Portfolio Project</h2>
+    <p>The Portfolio project was crafted using HTML, serving both as a practice platform and a display of various achievements. This endeavor incorporated the integration of images seamlessly with textual content, enhancing user engagement and visual appeal. Leveraging HTML tags and components, the portfolio ensured a structured and organized presentation of information. Additionally, the inclusion of links facilitated easy navigation, directing users to specific project pages or related resources. 
+    </p>
+    <image src="images/Portfoliop1.jpeg">
+    <h2>Day 74: Portfolio Project Style.css</h2>   
+    <p>
+        The Portfolio project was designed using HTML and CSS, featuring vibrant colors, stylish alignments, and seamless image-text integration. Serving as both a practice platform and a showcase of achievements, it prioritized user engagement and visual appeal. Through structured HTML tags, CSS styles, and strategic alignments, the portfolio presented information in an organized manner. </p> 
+    <image src="images/Portfoliop2.jpeg">
     <h2>Day 66: Calculator</h2>
     <p>The calculator project was built using the tkinter library in Python for
         creating a graphical user interface (GUI). The main interface consists of
