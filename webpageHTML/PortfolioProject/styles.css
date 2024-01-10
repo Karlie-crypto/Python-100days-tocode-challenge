@@ -1,0 +1,17 @@
+h1{
+    font-family: 'Arial Narrow Bold';
+    font-size: 30px;
+    color: black;
+      
+  }
+  h2 {
+    color: rgb(118, 184, 132);  /* Sets the color of h2 headings to red */
+}
+
+  img {
+    width: 30%;   /* Adjust to your preferred width */
+    height: flex;   /* Maintain aspect ratio */
+}
+p {
+    font-family: Arial, sans-serif; /* Sets the font of paragraphs to Arial */
+}
