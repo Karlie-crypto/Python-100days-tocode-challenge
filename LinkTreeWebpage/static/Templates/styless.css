@@ -1,0 +1,33 @@
+/* Flex container styling */
+.flex-container {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center; /* Center aligns items horizontally */
+    align-items: center; /* Center aligns items vertically */
+    height: 100vh; /* Full viewport height */
+    font-family: Arial, sans-serif; /* Set font family */
+    background-color: lightblue; /* Set the background color to purple */
+    color: rgb(29, 3, 90); /* Set text color to white for better contrast */
+    padding: 50px; /* Add padding for better layout */
+    box-sizing: border-box; /* Include padding in total width/height */
+    text-align: center; /* Center-align text within the flex container */
+}
+
+/* Image styling */
+.flex-container img {
+    width: 400px; /* Set a specific width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add some space below the image */
+}
+
+/* Additional styling (optional) */
+h1, p, h3, ul {
+    margin: 10px 0; /* Add some margin for better spacing */
+}
+
+p {
+    margin: 10px 0; /* Add some margin for better spacing */
+    font-family: Arial, sans-serif; /* Set font family to Arial */
+    text-align: center;
+    color: rgb(29, 3, 90); /* Set text color to match link color (blue) */
+}
