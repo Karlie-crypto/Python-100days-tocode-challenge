@@ -40,4 +40,4 @@ In the practice of tolerance, one's enemy is the best teacher.
 
 
 
-In this Index file, I create a Function which calls my name in Block letters using JavaScript, In addition I added the Css for my text color, together with the Html document to call the function I created  using javaScript. 🙈
+
