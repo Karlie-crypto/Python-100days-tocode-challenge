@@ -4,66 +4,40 @@ from flask import Flask, url_for
 app = Flask(__name__)
 
 # Define the root route
-
-
 @app.route('/')
 def index():
     return 'Portfolio Project!'
 
 # Define the home route
-
-
 @app.route('/home')
 def home():
-    page = """ 
+    page = f"""
     <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Portfolio Project</title>
-    <style>
-      .container {
-        display: flex;
-        align-items: flex-start;
-      }
-
-      .text-content {
-        flex: 1;
-        padding-left: 20px; /* Add some space between the image and text */
-      }
-
-      /* Style for the images */
-      .image-container {
-        display: flex;
-        justify-content: space-between; /* Distribute the images evenly */
-      }
-
-      .image-container div {
-        width: 30%; /* Adjust based on your preference */
-        margin-right: 10px; /* Add some space between the images */
-      }
-
-      .image-container div img {
-        width: 100%;
-      }
-      .left {
+    <html>
+      <head>
+        <title>My Portfolio Project</title>
+        <style>
+          .container {{
             display: flex;
-            justify-content: left;
-            align-items: left;
-            color: rgb(11, 13, 11);
-        }
-       h2, h4, h5, h6 {
-            color: rgb(12, 14, 13); /* Set text color for all headers */
-        }
-    </style>
-  </head>
-
-  <body>
-    <div class="left">
-      <h1>Karlie's Portfolio Project</h1>
-  </div>
-    <div class="container">
-      <img src="Karlie.jpg" alt="Karlie Image" width="20%" />
-      <div class="text-content">
+            align-items: flex-start;
+          }}
+          /* ... Rest of your CSS styles ... */
+        </style>
+        <!-- Embedding the CSS file using f-string -->
+        <link rel="stylesheet" href="{url_for('static', filename='Templates/styles.css')}">
+      </head>
+      <body>
+        <div class="left">
+          <h1>Karlie's Portfolio Project</h1>
+        </div>
+        <div class="container">
+          <!-- Embedding the image using f-string -->
+          <img src="{url_for('static', filename='images/Karlie.jpg')}" alt="Karlie Image" width="20%" />
+          <div class="text-content">
+            <!-- ... Rest of your HTML content ... -->
+          </div>
+        </div>
+        <!-- ... Rest of your HTML content ... -->
         <p>
           Hey there! 🌟 My name is Karlie Moyo, a passionate full-stack
           developer hailing from South Africa. Currently, skilled in JavaScript,
@@ -140,16 +114,12 @@ def home():
       >
     </p>
     <a style="color:red;" href="karlie.html">Go to page 2</a>
-  </body>
-</html>
-    """.format(
-        css=url_for('static', filename='Templates/styles.css'),
-        image=url_for('static', filename='images/Karlie.jpg')
-    )
+      </body>
+    </html>
+    """
     return page
-
 
 # Main execution point
 if __name__ == '__main__':
-    # Run the Flask app on host '0.0.0.0' and port 8080 in debug mode
+    # Run the Flask app on host '0.0.0.0' and port 8081 in debug mode
     app.run(host='0.0.0.0', port=8081, debug=True)
