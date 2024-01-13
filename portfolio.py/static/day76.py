@@ -24,7 +24,7 @@ def home():
           /* ... Rest of your CSS styles ... */
         </style>
         <!-- Embedding the CSS file using f-string -->
-        <link rel="stylesheet" href="{url_for('static', filename='Templates/styles.css')}">
+        <link rel="stylesheet" href="{url_for('static', filename='templates/styles.css')}">
       </head>
       <body>
         <div class="left">
