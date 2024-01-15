@@ -1,17 +1,30 @@
-h1{
-    font-family: 'Arial Narrow Bold';
-    font-size: 30px;
-    color: black;
-      
-  }
-  h2 {
-    color: rgb(118, 184, 132);  /* Sets the color of h2 headings to red */
+h1 {
+  font-family: 'Arial Narrow Bold';
+  font-size: 30px;
+  color: black;
+}
+h2 {
+  color: rgb(118, 184, 132); /* Sets the color of h2 headings to red */
 }
 
-  img {
-    width: 30%;   /* Adjust to your preferred width */
-    height: flex;   /* Maintain aspect ratio */
-}
 p {
-    font-family: Arial, sans-serif; /* Sets the font of paragraphs to Arial */
+  font-family: Arial, sans-serif; /* Sets the font of paragraphs to Arial */
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.left {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  color: rgb(11, 13, 11);
+}
+h2,
+h4,
+h5,
+h6 {
+  color: rgb(12, 14, 13); /* Set text color for all headers */
 }
