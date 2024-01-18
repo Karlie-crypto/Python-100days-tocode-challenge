@@ -1,0 +1,18 @@
+flex-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+a {
+    color: #007bff;
+}
