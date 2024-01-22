@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Not a Robot Challenge</title>
+</head>
+<body>
+
+<form method="POST" action="/">
+    {{ form.hidden_tag() }}
+    <h3>Question 1: {{ form.made_of_metal.label }}</h3>
+    {{ form.made_of_metal() }}
+
+    <h3>Question 2: {{ form.constructed_by.label }}</h3>
+    {{ form.constructed_by() }}
+
+    <h3>Question 3: {{ form.dreams_of_being.label }}</h3>
+    {{ form.dreams_of_being() }}
+
+    <br>
+    {{ form.submit() }}
+</form>
+
+</body>
+</html>
