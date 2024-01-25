@@ -1,0 +1,15 @@
+/* theme2.css */
+
+/* Import styles from the existing CSS file */
+@import url('static/styles.css');
+
+/* Add additional styles for theme2 */
+body {
+    background-color: #87ceeb; /* Sky Blue */
+}
+
+h1 {
+    color: #2e8b57; /* Sea Green */
+}
+
+/* Add any other specific styles for theme2 */

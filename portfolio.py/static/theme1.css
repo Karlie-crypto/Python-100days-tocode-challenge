@@ -1,0 +1,15 @@
+/* theme1.css */
+
+/* Import styles from the existing CSS file */
+@import url('static/styles.css');
+
+/* Add additional styles for theme1 */
+body {
+    background-color: #ffd700; /* Gold */
+}
+
+h1 {
+    color: #800000; /* Maroon */
+}
+
+/* Add any other specific styles for theme1 */
