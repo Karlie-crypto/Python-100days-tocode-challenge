@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Not a Robot Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select, input {
+            margin-bottom: 15px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<form id="robotForm">
+    <label>Question 1: Are you made of metal?</label>
+    <label>
+        <input type="radio" name="madeOfMetal" value="yes"> Yes
+    </label>
+    <label>
+        <input type="radio" name="madeOfMetal" value="no"> No
+    </label>
+
+    <label>Question 2: Were you constructed by the Sirius Cybernetics Corporation?</label>
+    <label>
+        <select name="constructedBy">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+    </label>
+
+    <label>Question 3: Do you dream of being ED-209 when you grow up?</label>
+    <label>
+        <input type="text" name="dreamsOfBeing" placeholder="Your answer">
+    </label>
+
+    <button type="button" onclick="checkRobot()">Submit</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function checkRobot() {
+        const madeOfMetal = document.querySelector('input[name="madeOfMetal"]:checked');
+        const constructedBy = document.querySelector('select[name="constructedBy"]');
+        const dreamsOfBeing = document.querySelector('input[name="dreamsOfBeing"]');
+
+        if (!madeOfMetal || !constructedBy || !dreamsOfBeing.value.trim()) {
+            alert("Please answer all questions.");
+            return;
+        }
+
+        const metalAnswer = madeOfMetal.value;
+        const constructionAnswer = constructedBy.value;
+        const dreamsAnswer = dreamsOfBeing.value.trim().toLowerCase();
+
+        if (metalAnswer === 'yes' && constructionAnswer === 'yes' && dreamsAnswer.includes('ed-209')) {
+            document.getElementById('result').innerText = "You're a robot!";
+        } else {
+            document.getElementById('result').innerText = "Not a robot.";
+        }
+    }
+</script>
+
+</body>
+</html>
